@@ -1,0 +1,37 @@
+﻿@using Work.Domain.Entities
+@model IQueryable<ServiceItemIn>
+    
+        <div class="col-6 col-12-medium">
+            <h2>Расход</h2>
+
+        </div>
+        <div class="col-6 col-12-medium">
+            <h2>
+                Доход <a asp-controller="ServiceItems" asp-action="Edit" asp-route-id="">Добавить запись</a>
+            </h2>
+
+
+            @if (Model.Any())
+            {
+                <div>
+                    @foreach (ServiceItemIn entity in Model)
+                    {
+                        <div>
+
+                            <p>
+                                @($"{entity.DateAdded}") | @($"{entity.Sum}") | @($"{entity.Category}")
+                                |
+                                <a asp-controller="ServiceItems" asp-action="Edit" asp-route-id="@entity.Id">редактировать</a>
+                                
+                                <form style="display: inline-block;" id="form-@entity.Id" asp-controller="ServiceItems" asp-action="Delete" method="post">
+                                    <input type="hidden" name="id" value="@entity.Id">
+                                    <a href="#" onclick="document.getElementById('form-@entity.Id').submit();">удалить</a>
+                                </form>
+                                
+                            </p>
+
+                        </div>
+                    }
+                </div>
+            }
+        </div>
