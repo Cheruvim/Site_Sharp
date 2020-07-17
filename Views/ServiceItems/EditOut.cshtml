@@ -2,7 +2,7 @@
 
 @model ServiceItem
 @{
-    string strTitle = "Редактировать запись(Доход)";
+    string strTitle = "Редактировать запись(Расход)";
     ViewBag.Title = strTitle;
 }
 
@@ -11,10 +11,9 @@
 <div>
     <h2>@strTitle</h2>
     <div>
-        <form asp-controller="ServiceItems" asp-action="Edit" method="post" enctype="multipart/form-data">
+        <form asp-controller="ServiceItems" asp-action="EditOut" method="post" enctype="multipart/form-data">
             <input type="hidden" asp-for="Id" />
             <input type="hidden" asp-for="DateAdded" />
-            <input type="hidden" asp-for="Type" />
 
             <div asp-validation-summary="All"></div>
             <div class="div-box">

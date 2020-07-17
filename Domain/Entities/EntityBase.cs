@@ -21,5 +21,7 @@ namespace Work.Domain.Entities
 
         [DataType(DataType.Time)]
         public DateTime DateAdded { get; set; }
+
+        public bool Type { get; set; }
     }
 }

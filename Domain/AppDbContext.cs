@@ -9,8 +9,8 @@ namespace Work.Domain
     public class AppDbContext : IdentityDbContext<IdentityUser>
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
-        public DbSet<ServiceItemIn> ServiceItems_in { get; set; }
-        public DbSet<ServiceItemOut> ServiceItems_out { get; set; }
+        public DbSet<ServiceItem> ServiceItems_in { get; set; }
+        public DbSet<ServiceItem> ServiceItems_out { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

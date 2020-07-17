@@ -7,7 +7,7 @@ namespace Work.Domain.Entities
 {
     public class ModelClass
     {
-        public IQueryable<ServiceItemIn> InModel { get; set; }
-        public IQueryable<ServiceItemOut> OutModel { get; set; }
+        public IQueryable<ServiceItem> InModel { get; set; }
+        public IQueryable<ServiceItem> OutModel { get; set; }
     }
 }

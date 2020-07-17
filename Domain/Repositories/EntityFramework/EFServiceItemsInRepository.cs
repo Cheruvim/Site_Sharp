@@ -16,19 +16,19 @@ namespace Work.Domain.Repositories.EntityFramework
             this.context = context;
         }
 
-        public IQueryable<ServiceItemIn> GetServiceItems()
+        public IQueryable<ServiceItem> GetServiceItems()
         {
             return context.ServiceItems_in;
         }
 
-        public ServiceItemIn GetServiceItemById(Guid id)
+        public ServiceItem GetServiceItemById(Guid id)
         {
             return context.ServiceItems_in.FirstOrDefault(x => x.Id == id);
         }
 
         
 
-        public void SaveServiceItem(ServiceItemIn entity)
+        public void SaveServiceItem(ServiceItem entity)
         {
             if (entity.Id == default)
                 context.Entry(entity).State = EntityState.Added;
@@ -39,7 +39,7 @@ namespace Work.Domain.Repositories.EntityFramework
 
         public void DeleteServiceItem(Guid id)
         {
-            context.ServiceItems_in.Remove(new ServiceItemIn() { Id = id });
+            context.ServiceItems_in.Remove(new ServiceItem() { Id = id });
             context.SaveChanges();
         }
     }

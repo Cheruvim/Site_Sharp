@@ -1,0 +1,20 @@
+﻿@model ServiceItem
+@{
+    
+}
+
+    <div>
+        <h2>
+            Дата Добавления : @Model.DateAdded
+        </h2>
+        <h2>
+            Категория : @Model.Category
+        </h2>
+        <h2>
+            Сумма : @Model.Sum
+        </h2>
+        <div>
+            Комментарий</br>@Html.Raw(Model.Comment)
+        </div>
+
+    </div>

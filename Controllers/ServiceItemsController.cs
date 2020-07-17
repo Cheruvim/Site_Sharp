@@ -22,18 +22,47 @@ namespace Work.Controllers
             this.hostingEnvironment = hostingEnvironment;
         }
 
+        public IActionResult Index(Guid id)
+        {
+            if (id != default)
+            {
+                return View("Show", dataManager.ItemsIn.GetServiceItemById(id));
+            }
+
+            return View(dataManager.ItemsIn.GetServiceItems());
+        }
+
+
         public IActionResult Edit(Guid id)
         {
-            var entity = id == default ? new ServiceItemIn() : dataManager.ItemsIn.GetServiceItemById(id);
+            var entity = id == default ? new ServiceItem() : dataManager.ItemsIn.GetServiceItemById(id);
+
+            return View(entity);
+        }
+        public IActionResult EditOut(Guid id)
+        {
+            var entity = id == default ? new ServiceItem() : dataManager.ItemsOut.GetServiceItemById(id);
             return View(entity);
         }
         [HttpPost]
-        public IActionResult Edit(ServiceItemIn model)
+        public IActionResult Edit(ServiceItem model)
         {
             if (ModelState.IsValid)
             {
-                
+                model.Type = true; 
                 dataManager.ItemsIn.SaveServiceItem(model);
+                return RedirectToAction(nameof(HomeController.Index), nameof(HomeController).CutController());
+            }
+            return View(model);
+
+        }
+        [HttpPost]
+        public IActionResult EditOut(ServiceItem model)
+        {
+            if (ModelState.IsValid)
+            {
+                model.Type = false;
+                dataManager.ItemsOut.SaveServiceItem(model);
                 return RedirectToAction(nameof(HomeController.Index), nameof(HomeController).CutController());
             }
             return View(model);
@@ -43,6 +72,12 @@ namespace Work.Controllers
         public IActionResult Delete(Guid id)
         {
             dataManager.ItemsIn.DeleteServiceItem(id);
+            return RedirectToAction(nameof(HomeController.Index), nameof(HomeController).CutController());
+        }
+        [HttpPost]
+        public IActionResult DeleteOut(Guid id)
+        {
+            dataManager.ItemsOut.DeleteServiceItem(id);
             return RedirectToAction(nameof(HomeController.Index), nameof(HomeController).CutController());
         }
     }

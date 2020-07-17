@@ -19,8 +19,13 @@ namespace Work.Controllers
 
         public IActionResult Index()
         {
-            
+
             return View(dataManager.ItemsIn.GetServiceItems());
+        }
+        public IActionResult IndexOut()
+        {
+
+            return View(dataManager.ItemsOut.GetServiceItems());
         }
     }
 }

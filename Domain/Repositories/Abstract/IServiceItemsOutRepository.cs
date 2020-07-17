@@ -6,9 +6,9 @@ namespace Work.Domain.Repositories.Abstract
 {
     public interface IServiceItemsOutRepository
     {
-        IQueryable<ServiceItemOut> GetServiceItems();
-        ServiceItemOut GetServiceItemById(Guid id);
-        void SaveServiceItem(ServiceItemOut entity);
+        IQueryable<ServiceItem> GetServiceItems();
+        ServiceItem GetServiceItemById(Guid id);
+        void SaveServiceItem(ServiceItem entity);
         void DeleteServiceItem(Guid id);
     }
 }
